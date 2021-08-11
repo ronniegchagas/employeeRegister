@@ -3,40 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>HHIB - @ViewBag.Title</title>
+    <link href="~/assets/css/tailwind.min.css" rel="stylesheet">
+    @Styles.Render("~/assets/css")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+<body class="bg-green-100">
+    <div class="sticky top-0 bg-white w-full shadow-sm">
+        <div class="max-w-screen-xl mx-auto">
+            <ul class="flex flex-row">
+                <li class="flex flex-1 py-4 px-3 text-xl font-semibold text-green-600">Cadastro de Funcionários - HHIB</li>
+                <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "flex h-full px-3 items-center hover:bg-gray-100 transition-colors duration-300 ease-in-out" })</li>
+                <li>@Html.ActionLink("Cadastrar", "Cadastrar", "Funcionarios", null, new { @class = "flex h-full px-3 items-center hover:bg-gray-100 transition-colors duration-300 ease-in-out" })</li>
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    <div class="max-w-screen-xl mx-auto mt-3">
+        <div class="rounded bg-white p-4 border">
+            @RenderBody()
+        </div>
+        <footer class="border-t border-green-200 mt-3 py-3">
+            <p class="font-semibold">&copy; @DateTime.Now.Year - Hyundai Heavy Industries Brasil</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

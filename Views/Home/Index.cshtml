@@ -1,31 +1,69 @@
-﻿@{
+﻿@model IEnumerable<employeeRegister.Models.Employee>
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<table class="w-full text-left listaFuncionarios mb-4">
+    <tr>
+        <th width="60" class="bg-gray-100">
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th width="180" class="text-center">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th width="150" class="text-center">
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th width="190">&nbsp;</th>
+    </tr>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @string.Format("{0:000}", item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td class="text-center">
+            @string.Format("{0:dd/MM/yyyy}", item.BirthDate)
+        </td>
+        <td class="text-center">
+            @string.Format("{0:C2}", item.Salary)
+        </td>
+        <td class="flex space-x-1 text-center">
+            @Html.ActionLink("Editar", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "flex bg-green-300 hover:bg-green-400 transition-colors duration-300 ease-in-out py-1 px-5 rounded" })
+            @Html.ActionLink("Deletar", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "flex bg-red-300 hover:bg-red-400 transition-colors duration-300 ease-in-out py-1 px-5 rounded confirmation" })
+        </td>
+    </tr>
+    }
+
+</table>
+
+<p><strong>Total:</strong> @Model.Count() Funcionário(s)</p>
+<p><strong>Media Salárial:</strong> @string.Format("{0:C2}", Model.Average(x => x.Salary))</p>
+
+@section scripts {
+    <script type="text/javascript">
+        var elems = document.querySelectorAll('.confirmation');
+        elems.forEach(element => {
+            element.addEventListener('click', function (e) {
+                var confirmation = confirm('Tem certeza que deseja deletar este funcionário?');
+                if (!confirmation) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

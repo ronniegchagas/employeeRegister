@@ -21,26 +21,26 @@
                 new Employee {
                     Name = "Carson",
                     Address = "Alexander",
-                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
-                    Salary = "100"
+                    BirthDate = DateTime.Parse("2010-09-01"),
+                    Salary = 100
                 },
                 new Employee {
                     Name = "Carson",
                     Address = "Alexander",
-                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
-                    Salary = "100"
+                    BirthDate = DateTime.Parse("2010-09-01"),
+                    Salary = 100
                 },
                 new Employee {
                     Name = "Carson",
                     Address = "Alexander",
-                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
-                    Salary = "100"
+                    BirthDate = DateTime.Parse("2010-09-01"),
+                    Salary = 100
                 },
                 new Employee {
                     Name = "Carson",
                     Address = "Alexander",
-                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
-                    Salary = "100"
+                    BirthDate = DateTime.Parse("2010-09-01"),
+                    Salary = 100
                 }
             };
             employees.ForEach(s => context.Employees.AddOrUpdate(p => p.Id, s));

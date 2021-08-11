@@ -13,16 +13,22 @@ namespace employeeRegister.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Por favor informe o nome do funcionário.")]
         [Display(Name = "Nome")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Por favor informe um endereço.")]
         [Display(Name = "Endereço")]
         public string Address { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Data Nascimento")]
-        public string BirthDate { get; set; }
+        [Required(ErrorMessage = "Por favor informe uma data válida.")]
+        public DateTime BirthDate { get; set; }
 
         [Display(Name = "Salário (R$)")]
-        public string Salary { get; set; }
+        [Required(ErrorMessage = "Por favor informe um valor moeda. (utilize apenas vírgula como separador)")]
+        public float Salary { get; set; }
     }
 }
