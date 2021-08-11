@@ -6,7 +6,7 @@ namespace employeeRegister.Models
     public class EmployeeContext : DbContext
     {
 
-        public EmployeeContext() : base("DefaultConnection")
+        public EmployeeContext() : base("EmployeeContext")
         {
         }
 
@@ -14,6 +14,10 @@ namespace employeeRegister.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Employee>();
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }

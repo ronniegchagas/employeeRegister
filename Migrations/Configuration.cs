@@ -1,6 +1,8 @@
 ﻿namespace employeeRegister.Migrations
 {
+    using employeeRegister.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -14,10 +16,35 @@
 
         protected override void Seed(employeeRegister.Models.EmployeeContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            var employees = new List<Employee>
+            {
+                new Employee {
+                    Name = "Carson",
+                    Address = "Alexander",
+                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
+                    Salary = "100"
+                },
+                new Employee {
+                    Name = "Carson",
+                    Address = "Alexander",
+                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
+                    Salary = "100"
+                },
+                new Employee {
+                    Name = "Carson",
+                    Address = "Alexander",
+                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
+                    Salary = "100"
+                },
+                new Employee {
+                    Name = "Carson",
+                    Address = "Alexander",
+                    BirthDate = DateTime.Parse("2010-09-01").ToString(),
+                    Salary = "100"
+                }
+            };
+            employees.ForEach(s => context.Employees.AddOrUpdate(p => p.Id, s));
+            context.SaveChanges();
         }
     }
 }
