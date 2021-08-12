@@ -2,6 +2,8 @@
 
 Aplicação em MVC com CRUD básico para cadastro e alteração de funcionários
 
+**Libs utilizadas:** C#, Tailwindcss e Javascript vanilla.
+
 
 ## 1. Configuração
 Abra o arquivo Web.config e procure pela tag **connectionStrings** na linha 11.
