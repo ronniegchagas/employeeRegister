@@ -1,3 +1,8 @@
+# Employee Register
+
+Aplicação em MVC com CRUD básico para cadastro e alteração de funcionários
+
+
 ## 1. Configuração
 Abra o arquivo Web.config e procure pela tag **connectionStrings** na linha 11.
   
