@@ -1,4 +1,12 @@
-INSERT INTO employee.dbo.employee (Name,Address,BirthDate,Salary) VALUES
+CREATE TABLE employee (
+    Id INT PRIMARY KEY,
+    Name VARCHAR (255) NOT NULL,
+    Address VARCHAR (255) NOT NULL,
+    BirthDate DATETIME NOT NULL,
+    Salary REAL NOT NULL
+);
+
+INSERT INTO employee (Name,Address,BirthDate,Salary) VALUES
 	 ('Alissa de Azevedo','Rua A, n 210 Volta Redonda','2018-10-15 00:00:00.0',1350.0),
 	 ('Ronnie Garcia dos Santos Chagas','Rua Doutor Gomes Filho','1987-09-19 00:00:00.0',3630.0),
 	 ('Willian','Av. dos Trabalhadores','2001-02-23 00:00:00.0',2120.3),
